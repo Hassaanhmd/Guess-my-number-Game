@@ -3,7 +3,7 @@ import { TextInput, View, StyleSheet, Alert } from 'react-native';
 
 import PrimaryButton from '../components/PrimaryButton';
 
-function StartGameScreen() {
+function StartGameScreen({ onPickNumber }) {
   const [enteredNumber, setEnteredNumber] = useState(''); //a text input will always return strong even if its a number (or using the number-pad)
 
   function numberInputHandler(enteredText) {
@@ -26,7 +26,8 @@ function StartGameScreen() {
       );
       return;
     }
-    console.log('Valid Number!');
+
+    onPickNumber(chosenNumber);
   }
 
   return (
