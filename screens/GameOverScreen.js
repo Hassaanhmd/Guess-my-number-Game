@@ -1,6 +1,6 @@
-import { View, Image, StyleSheet, Text } from 'react-native';
-import PrimaryButton from '../components/ui/PrimaryButton';
+import { View, Image, StyleSheet, Text, Dimensions } from 'react-native';
 
+import PrimaryButton from '../components/ui/PrimaryButton';
 import Title from '../components/ui/Title';
 import Colors from '../constants/colors';
 
@@ -25,6 +25,8 @@ function GameOverScreen({roundsNumber, userNumber, onStartNewGame}) {
 
 export default GameOverScreen;
 
+const deviceWidth = Dimensions.get('window').width;
+
 const styles = StyleSheet.create({
   rootContainer: {
     flex: 1,
@@ -33,9 +35,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   imageContainer: {
-    width: 300,
-    height: 300,
-    borderRadius: 150, //border radius half of width/height of a square (in this case square is 400x400 therefore border radius of 200 will give a circle)
+    width: deviceWidth < 380 ? 150 : 300,
+    height: deviceWidth < 380 ? 150 : 300,
+    borderRadius: deviceWidth < 380 ? 75 : 150, //border radius half of width/height of a square (in this case square is 150x150 OR 300x300 therefore border radius of 75 OR 150 will give a circle)
     borderWidth: 3,
     borderColor: Colors.primary800,
     overflow: 'hidden',
